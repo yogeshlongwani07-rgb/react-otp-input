@@ -19,6 +19,10 @@ function OtpInput({ n }) {
     }
   }
 
+  function clearInput(e, index) {
+    refs.current[index - 1]?.focus();
+  }
+
   useEffect(() => {
     alert(`Your OTP is ${otpRef.current}`);
   }, []);
@@ -52,6 +56,7 @@ function OtpInput({ n }) {
             onChange={(e) => {
               handleChange(e, index);
             }}
+            onKeyDown={(e) => clearInput(e, index)}
           ></input>
         );
       })}

@@ -58,9 +58,9 @@ function OtpInput({ n }) {
     }, 1000);
     return () => clearInterval(interval);
   }, [timer]);
-  // useEffect(() => {
-  //   sendOTP();
-  // }, []);
+  useEffect(() => {
+    sendOTP();
+  }, []);
 
   useEffect(() => {
     console.log(refs);

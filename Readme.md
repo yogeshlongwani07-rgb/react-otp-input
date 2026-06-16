@@ -127,6 +127,9 @@ http://localhost:5173
 - Countdown timer
 - API integration for real authentication
 - Unit testing with React Testing Library
+- Arrow Key Navigation
+- Shake animation on wrong OTP
+- Make NPM Package
 
 ---
 

@@ -6,6 +6,7 @@ function OtpInput({ n }) {
   let [message, setMessage] = useState("");
   let [timer, setTimer] = useState(10);
   let [timerDone, setTimerDone] = useState(false);
+  let [shake, setShake] = useState(false);
 
   let refs = useRef([]);
 
@@ -84,9 +85,12 @@ function OtpInput({ n }) {
     if (valid) {
       refs.current[inp.length - 1]?.blur();
       let num = inp.join("");
-      num == otpRef.current
-        ? setMessage({ msg: "Verified", done: true })
-        : setMessage({ msg: "OTP is incorrect", done: false });
+      if (num == otpRef.current) {
+        setMessage({ msg: "Verified", done: true });
+      } else {
+        setMessage({ msg: "OTP is incorrect", done: false });
+        setShake(true);
+      }
     }
   }, [inp]);
   return (
@@ -99,6 +103,7 @@ function OtpInput({ n }) {
       {inp.map((el, index) => {
         return (
           <input
+            className={shake ? "shake" : ""}
             type="text"
             key={index}
             value={el}

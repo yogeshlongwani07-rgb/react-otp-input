@@ -2,13 +2,25 @@ import { useState, useRef, useEffect } from "react";
 import "./App.css";
 
 function OtpInput({ n }) {
-  let [inp, setInp] = useState(["", "", "", "", ""]);
+  const [inp, setInp] = useState(() => Array(n).fill(""));
   let [message, setMessage] = useState("");
   let [timer, setTimer] = useState(10);
   let [timerDone, setTimerDone] = useState(false);
 
   let refs = useRef([]);
-  let otpRef = useRef(Math.floor(Math.random() * 100000) + 1);
+
+  function generateOTP(length) {
+    let otp = "";
+
+    for (let i = 0; i < length; i++) {
+      otp += Math.floor(Math.random() * 10);
+    }
+
+    return otp;
+  }
+
+  const otpRef = useRef(generateOTP(n));
+
   function handleChange(e, index) {
     let value = e.target.value.slice(-1);
     if (isNaN(value)) return;

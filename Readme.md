@@ -121,7 +121,6 @@ http://localhost:5173
 ## 🔮 Possible Improvements
 
 - Paste entire OTP into the inputs
-- Custom OTP length via props
 - API integration for real authentication
 - Unit testing with React Testing Library
 - Arrow Key Navigation

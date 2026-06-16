@@ -120,11 +120,8 @@ http://localhost:5173
 
 ## 🔮 Possible Improvements
 
-- Paste OTP
 - Paste entire OTP into the inputs
 - Custom OTP length via props
-- Resend OTP functionality
-- Countdown timer
 - API integration for real authentication
 - Unit testing with React Testing Library
 - Arrow Key Navigation

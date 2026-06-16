@@ -34,6 +34,28 @@ function OtpInput({ n }) {
     }
   }
 
+  function handlePaste(e) {
+    e.preventDefault();
+
+    const pasted = e.clipboardData
+      .getData("text")
+      .replace(/\D/g, "")
+      .slice(0, n);
+
+    if (!pasted) return;
+
+    const newInp = Array(n).fill("");
+
+    pasted.split("").forEach((digit, index) => {
+      newInp[index] = digit;
+    });
+
+    setInp(newInp);
+
+    const nextIndex = Math.min(pasted.length, n) - 1;
+    refs.current[nextIndex]?.focus();
+  }
+
   function functionInput(e, index) {
     if (
       e.key !== "Backspace" &&
@@ -127,6 +149,7 @@ function OtpInput({ n }) {
               handleChange(e, index);
             }}
             onKeyDown={(e) => functionInput(e, index)}
+            onPaste={(e) => handlePaste(e)}
           ></input>
         );
       })}

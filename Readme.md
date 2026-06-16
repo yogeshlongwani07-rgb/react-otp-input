@@ -120,14 +120,12 @@ http://localhost:5173
 
 ## 🔮 Possible Improvements
 
-- Support Backspace navigation
+- Paste OTP
 - Paste entire OTP into the inputs
 - Custom OTP length via props
-- Mobile-friendly numeric keypad
 - Resend OTP functionality
 - Countdown timer
 - API integration for real authentication
-- Accessibility enhancements
 - Unit testing with React Testing Library
 
 ---

@@ -20,12 +20,20 @@ function OtpInput({ n }) {
   }
 
   function clearInput(e, index) {
-    refs.current[index - 1]?.focus();
+    if (e.key !== "Backspace") return;
+    const newInp = [...inp];
+    if (newInp[index] !== "") {
+      ((newInp[index] = ""), setInp(newInp));
+    } else if (index > 0) {
+      newInp[index - 1] = "";
+      setInp(newInp);
+      refs.current[index - 1]?.focus();
+    }
   }
 
-  useEffect(() => {
-    alert(`Your OTP is ${otpRef.current}`);
-  }, []);
+  // useEffect(() => {
+  //   alert(`Your OTP is ${otpRef.current}`);
+  // }, []);
 
   useEffect(() => {
     console.log(refs);
@@ -35,6 +43,7 @@ function OtpInput({ n }) {
   useEffect(() => {
     const valid = inp.every((val) => val !== "");
     if (valid) {
+      refs.current[inp.length - 1]?.blur();
       let num = inp.join("");
       num == otpRef.current
         ? setMessage({ msg: "Verified", done: true })

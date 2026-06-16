@@ -123,7 +123,6 @@ http://localhost:5173
 - Paste entire OTP into the inputs
 - API integration for real authentication
 - Unit testing with React Testing Library
-- Arrow Key Navigation
 - Make NPM Package
 
 ---

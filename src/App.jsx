@@ -34,14 +34,27 @@ function OtpInput({ n }) {
     }
   }
 
-  function clearInput(e, index) {
-    if (e.key !== "Backspace") return;
-    const newInp = [...inp];
-    if (newInp[index] !== "") {
-      ((newInp[index] = ""), setInp(newInp));
-    } else if (index > 0) {
-      newInp[index - 1] = "";
-      setInp(newInp);
+  function functionInput(e, index) {
+    if (
+      e.key !== "Backspace" &&
+      e.key !== "ArrowRight" &&
+      e.key !== "ArrowLeft"
+    )
+      return;
+    if (e.key == "Backspace") {
+      const newInp = [...inp];
+      if (newInp[index] !== "") {
+        ((newInp[index] = ""), setInp(newInp));
+      } else if (index > 0) {
+        newInp[index - 1] = "";
+        setInp(newInp);
+        refs.current[index - 1]?.focus();
+      }
+    }
+    if (e.key == "ArrowRight") {
+      refs.current[index + 1]?.focus();
+    }
+    if (e.key == "ArrowLeft") {
       refs.current[index - 1]?.focus();
     }
   }
@@ -113,7 +126,7 @@ function OtpInput({ n }) {
             onChange={(e) => {
               handleChange(e, index);
             }}
-            onKeyDown={(e) => clearInput(e, index)}
+            onKeyDown={(e) => functionInput(e, index)}
           ></input>
         );
       })}
